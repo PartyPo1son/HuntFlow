@@ -46,4 +46,18 @@ app.get('/', async (req, res) => {
   res.render('Layout', initState);
 });
 
+app.get('/reg/', (req, res) => {
+  res.render('Layout');
+});
+
+app.get('/auth/', (req, res) => {
+  res.render('Layout');
+});
+
+app.get('/logout', (req, res) => {
+  res.clearCookie('user_sid');
+  req.session.destroy();
+  res.redirect('/');
+});
+
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

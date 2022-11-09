@@ -1,9 +1,9 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  class Test extends Model {
+  class User extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,11 +13,15 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Test.init({
-    title: DataTypes.TEXT
+  User.init({
+    name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    isAdmin: DataTypes.BOOLEAN,
+
   }, {
     sequelize,
-    modelName: 'Test',
+    modelName: 'User',
   });
-  return Test;
+  return User;
 };

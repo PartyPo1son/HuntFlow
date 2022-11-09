@@ -3,7 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import CandidateList from './CandidateList';
 import Navbar from './Navbar';
 import NavStatus from './NavStatus';
+import Reg from './Reg';
 import VakList from './VakList';
+import Auth from './Auth';
 
 export default function App() {
   return (
@@ -25,9 +27,8 @@ export default function App() {
 
       </div>
       <Routes>
-        {/* <Route path="/" element={<MainPage />} />
-        <Route path="/posts" element={<PostsPage allPosts={allPosts} />} /> */}
-
+        <Route path="/reg" element={<Reg />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </div>
   );

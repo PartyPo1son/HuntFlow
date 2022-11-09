@@ -1,6 +1,6 @@
 import express from 'express';
 import { hash, compare } from 'bcrypt';
-import { User } from '..db/';
+import { User } from '../../../db/models';
 
 const router = express.Router();
 

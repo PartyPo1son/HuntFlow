@@ -1,7 +1,7 @@
 import React from 'react';
 import CandidateList from '../CandidateList';
-import NavStatus from '../NavStatus';
-import VakList from '../VakList';
+import NavStatus from '../ui/NavStatus';
+import VakList from '../ui/VakList';
 
 export default function MainPage() {
   return (

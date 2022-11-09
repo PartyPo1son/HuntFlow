@@ -41,10 +41,10 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/addCard', async (req, res) => {
-  const initState = { path: req.originalUrl };
-  res.render('Layout', initState);
-});
+// app.get('/addCard', async (req, res) => {
+//   const initState = { path: req.originalUrl };
+//   res.render('Layout', initState);
+// });
 
 app.get('/', async (req, res) => {
   const initState = { path: req.originalUrl };

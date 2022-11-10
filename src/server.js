@@ -5,6 +5,7 @@ import store from 'session-file-store';
 import path from 'path';
 import Layout from './components/Layout';
 import jsxRender from './components/utils/jsxRender';
+import { Stage } from '../db/models';
 
 require('dotenv').config();
 
@@ -43,6 +44,12 @@ app.use((req, res, next) => {
 
 app.get('/', async (req, res) => {
   const initState = {};
+  res.render('Layout', initState);
+});
+
+app.get('/main/', async (req, res) => {
+  const allStatus = Stage.findAll();
+  const initState = { allStatus };
   res.render('Layout', initState);
 });
 

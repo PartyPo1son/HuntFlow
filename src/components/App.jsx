@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 import NavStatus from './NavStatus';
 import VakList from './VakList';
 
-export default function App() {
+export default function App({ allStatus }) {
   return (
     <div className="container">
       <div className="row">
@@ -17,16 +17,14 @@ export default function App() {
         <div className="col-2">
           <VakList />
         </div>
-
         <div className="col-10">
-          <NavStatus />
+          <NavStatus allStatus={allStatus} />
           <CandidateList />
         </div>
-
       </div>
+
       <Routes>
-        {/* <Route path="/" element={<MainPage />} />
-        <Route path="/posts" element={<PostsPage allPosts={allPosts} />} /> */}
+        {/* <Route path="/main" element={<MainPage />} /> */}
 
       </Routes>
     </div>

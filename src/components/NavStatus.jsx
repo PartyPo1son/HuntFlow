@@ -1,39 +1,10 @@
 import React from 'react';
+import OneStatus from './OneStatus';
 
-export default function NavStatus() {
+export default function NavStatus({ allStatus }) {
   return (
     <ul className="nav nav-tabs">
-      <li className="nav-item">
-        <a className="nav-link" href="#">Все кандидаты</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">Новые</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">Письмо-приглаш</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">Звонок-скрининг</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">Видеоинтервью</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">Передано заказчику</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">Интервью с заказчиком</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">Выставлен оффер</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">Приняли оффер</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">Отказ</a>
-      </li>
-
+      {allStatus.map((el) => <OneStatus key={el.id} onestatus={el} />)}
     </ul>
 
   );

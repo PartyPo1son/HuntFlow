@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './ui/Navbar';
-
 import AddCardPage from './pages/AddCardPage';
 import MainPage from './pages/MainPage';
 import ThanksPage from './pages/ThanksPage';
+import Reg from './Reg';
+import Auth from './Auth';
 
 export default function App() {
 // РАБОТА С ДОБАВЛЕНИЕМ КАНДИДАТА
@@ -43,6 +44,8 @@ export default function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/addCard" element={<AddCardPage groupInput={groupInput} inputHandler={inputHandler} submitHandler={submitHandler} />} />
         <Route path="/addCard/thanks" element={<ThanksPage />} />
+        <Route path="/reg" element={<Reg />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </>
   );

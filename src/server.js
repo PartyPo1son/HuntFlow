@@ -3,9 +3,9 @@ import morgan from 'morgan';
 import session from 'express-session';
 import store from 'session-file-store';
 import path from 'path';
-// import Layout from './components/Layout';
 import jsxRender from './components/utils/jsxRender';
 import addRouter from './routes/addRouter';
+import authRouter from './routes/authRouter';
 
 const app = express();
 const PORT = 3000;
@@ -33,6 +33,7 @@ const sessionConfig = {
   },
 };
 app.use(session(sessionConfig));
+app.use('/login', authRouter);
 
 app.use((req, res, next) => {
   res.locals.path = req.originalUrl;
@@ -42,21 +43,17 @@ app.use((req, res, next) => {
 
 app.use('/addCard', addRouter);
 
-// app.get('/addCard', async (req, res) => {
-//   const initState = { path: req.originalUrl };
-//   res.render('Layout', initState);
-// });
 
 app.get('/', async (req, res) => {
   const initState = { path: req.originalUrl };
   res.render('Layout', initState);
 });
 
-app.get('/reg/', (req, res) => {
+app.get('/reg', (req, res) => {
   res.render('Layout');
 });
 
-app.get('/auth/', (req, res) => {
+app.get('/auth', (req, res) => {
   res.render('Layout');
 });
 

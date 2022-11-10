@@ -23,7 +23,7 @@ function Reg() {
       <form onSubmit={(e) => submitHandler(e)}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Имя</label>
-          <input name="username" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          <input name="name" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Электронный адрес</label>

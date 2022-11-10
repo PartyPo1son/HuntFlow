@@ -61,16 +61,28 @@ app.get('/reg/', (req, res) => {
   res.render('Layout');
 });
 
-app.get('/candidates/:id', async (req, res) => {
-  const { id } = req.params;
+app.get('/auth', (req, res) => {
+  res.render('Layout');
+});
+
+app.get('/candidates/vacancy/:vac/:id', async (req, res) => {
+  const { vac, id } = req.params;
   const paramCandidates = await Candidate.findAll({
-    where: { vacancy_id: id },
+    where: {
+      vacancy_id: vac,
+      stage_id: id,
+    },
   });
   res.json(paramCandidates);
 });
 
-app.get('/auth', (req, res) => {
-  res.render('Layout');
+app.get('/candidates/:id', async (req, res) => {
+  const { id } = req.params;
+  const paramCandidates = await Candidate.findAll({
+    where: { vacancy_id: id }, include: Vacansy,
+  });
+  console.log(paramCandidates);
+  res.json(paramCandidates);
 });
 
 app.get('/logout', (req, res) => {

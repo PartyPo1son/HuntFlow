@@ -11,7 +11,8 @@ import CandidatCards from './CandidatCards';
 export default function App({
   candidat, allStatus, allCandidates, vacansy,
 }) {
-// РАБОТА С ДОБАВЛЕНИЕМ КАНДИДАТА
+  const [oneCand, setOneCand] = useState(candidat || {});
+  // РАБОТА С ДОБАВЛЕНИЕМ КАНДИДАТА
   const [groupInput, setGroupInput] = useState({
     first_name: '',
     last_name: '',
@@ -49,7 +50,7 @@ export default function App({
       </div>
 
       <Routes>
-        <Route path="/" element={<MainPage vacansy={vacansy} allStatus={allStatus} allCandidates={allCandidates} />} />
+        <Route path="/" element={<MainPage setOneCand={setOneCand} candidat={oneCand} vacansy={vacansy} allStatus={allStatus} allCandidates={allCandidates} />} />
         <Route path="/addCard" element={<AddCardPage groupInput={groupInput} inputHandler={inputHandler} submitHandler={submitHandler} />} />
         <Route path="/addCard/:id" element={<ThanksPage candidat={candidat} />} />
         <Route path="/candidat/:id" element={<CandidatCards candidat={candidat} />} />

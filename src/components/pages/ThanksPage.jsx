@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default function ThanksPage() {
   return (
     <div>
@@ -8,7 +9,7 @@ export default function ThanksPage() {
         <a href="/" type="button" className="btn btn-outline-info">на главную</a>
       </div>
 
-      здесь можно отрисовать карточку  кандидата для красоты
+      {/* <CandidatCards /> */}
     </div>
   );
 }

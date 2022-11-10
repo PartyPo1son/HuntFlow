@@ -9,9 +9,8 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  console.log(req.body);
-  const a = await Candidate.create(req.body);
-  console.log(a);
+  await Candidate.create({ ...req.body, stage_id: 1 });
+
   res.sendStatus(200);
 });
 

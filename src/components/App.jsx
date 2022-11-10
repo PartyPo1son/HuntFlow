@@ -9,9 +9,9 @@ import Auth from './Auth';
 import CandidatCards from './CandidatCards';
 
 export default function App({
-  candidat, allStatus, allCandidates, vacansy,
+  candidat, allStatus, allCandidates, vacansy, user,
 }) {
-// РАБОТА С ДОБАВЛЕНИЕМ КАНДИДАТА
+  // РАБОТА С ДОБАВЛЕНИЕМ КАНДИДАТА
   const [groupInput, setGroupInput] = useState({
     first_name: '',
     last_name: '',
@@ -44,7 +44,8 @@ export default function App({
     <div className="container">
       <div className="row">
         <div className="col-12">
-          <Navbar />
+          <Navbar user={user} />
+
         </div>
       </div>
 

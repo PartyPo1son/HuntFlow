@@ -8,7 +8,9 @@ import Reg from './Reg';
 import Auth from './Auth';
 import CandidatCards from './CandidatCards';
 
-export default function App({ candidat }) {
+export default function App({
+  candidat, allStatus, allCandidates, vacansy,
+}) {
 // РАБОТА С ДОБАВЛЕНИЕМ КАНДИДАТА
   const [groupInput, setGroupInput] = useState({
     first_name: '',
@@ -39,22 +41,21 @@ export default function App({ candidat }) {
   };
 
   return (
-    <>
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <Navbar />
-          </div>
+    <div className="container">
+      <div className="row">
+        <div className="col-12">
+          <Navbar />
         </div>
       </div>
+
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage vacansy={vacansy} allStatus={allStatus} allCandidates={allCandidates} />} />
         <Route path="/addCard" element={<AddCardPage groupInput={groupInput} inputHandler={inputHandler} submitHandler={submitHandler} />} />
         <Route path="/addCard/:id" element={<ThanksPage candidat={candidat} />} />
-        <Route path="/candidat/:id" element={<CandidatCards candidat={candidat}/>} />
+        <Route path="/candidat/:id" element={<CandidatCards candidat={candidat} />} />
         <Route path="/reg" element={<Reg />} />
         <Route path="/auth" element={<Auth />} />
       </Routes>
-    </>
+    </div>
   );
 }

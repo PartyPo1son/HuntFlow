@@ -1,10 +1,17 @@
 import React from 'react';
 import OneStatus from '../OneStatus';
 
-export default function NavStatus({ allStatus }) {
+export default function NavStatus({ allStatus, statusHandler }) {
   return (
     <ul className="nav nav-tabs">
-      {allStatus.map((el) => <OneStatus key={el.id} onestatus={el} />)}
+      {allStatus.map((el) => (
+        <li className="nav-item">
+          <button key={el.id} type="button" onClick={() => statusHandler(el.id)} className="nav-link">
+            {el.title}
+            {' '}
+          </button>
+        </li>
+      ))}
     </ul>
 
   );

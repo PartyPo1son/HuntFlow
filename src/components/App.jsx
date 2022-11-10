@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './ui/Navbar';
 
 import AddCardPage from './pages/AddCardPage';
 import MainPage from './pages/MainPage';
+import ThanksPage from './pages/ThanksPage';
 
 export default function App() {
 // РАБОТА С ДОБАВЛЕНИЕМ КАНДИДАТА
@@ -17,13 +18,16 @@ export default function App() {
     ...prev, [e.target.name]: e.target.value,
   }));
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    fetch('/', {
+    const response = await fetch('/addCard', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(groupInput),
     });
+    if (response.ok) {
+      window.location.href = '/addCard/thanks';
+    }
   };
 
   return (
@@ -38,6 +42,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/addCard" element={<AddCardPage groupInput={groupInput} inputHandler={inputHandler} submitHandler={submitHandler} />} />
+        <Route path="/addCard/thanks" element={<ThanksPage />} />
       </Routes>
     </>
   );

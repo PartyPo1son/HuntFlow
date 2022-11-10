@@ -5,7 +5,7 @@ import store from 'session-file-store';
 import path from 'path';
 // import Layout from './components/Layout';
 import jsxRender from './components/utils/jsxRender';
-// import addRouter from './routes/addRouter';
+import addRouter from './routes/addRouter';
 
 const app = express();
 const PORT = 3000;
@@ -40,6 +40,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/addCard', addRouter);
 
 // app.get('/addCard', async (req, res) => {
 //   const initState = { path: req.originalUrl };

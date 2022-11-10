@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function cardPage({ groupInput, inputHandler }) {
+export default function cardPage({ groupInput, inputHandler, submitHandler }) {
   return (
     <div className="container">
       <div className="row mt-5">

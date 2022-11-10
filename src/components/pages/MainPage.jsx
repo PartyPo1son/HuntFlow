@@ -3,7 +3,7 @@ import CandidateList from '../CandidateList';
 import NavStatus from '../ui/NavStatus';
 import VakList from '../ui/VakList';
 
-export default function MainPage() {
+export default function MainPage({ allStatus }) {
   return (
     <div>
       <div className="row">
@@ -12,7 +12,7 @@ export default function MainPage() {
         </div>
 
         <div className="col-10">
-          <NavStatus />
+          <NavStatus allStatus={allStatus} />
           <CandidateList />
 
         </div>

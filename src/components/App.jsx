@@ -7,7 +7,7 @@ import ThanksPage from './pages/ThanksPage';
 import Reg from './Reg';
 import Auth from './Auth';
 
-export default function App() {
+export default function App({ allStatus }) {
 // РАБОТА С ДОБАВЛЕНИЕМ КАНДИДАТА
   const [groupInput, setGroupInput] = useState({
     first_name: '',
@@ -41,7 +41,7 @@ export default function App() {
         </div>
       </div>
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage allStatus={allStatus} />} />
         <Route path="/addCard" element={<AddCardPage groupInput={groupInput} inputHandler={inputHandler} submitHandler={submitHandler} />} />
         <Route path="/addCard/thanks" element={<ThanksPage />} />
         <Route path="/reg" element={<Reg />} />

@@ -12,7 +12,6 @@ require('dotenv').config();
 
 const PORT = process.env.SERVER_PORT || 3000;
 const app = express();
-const PORT = 3000;
 
 app.engine('jsx', jsxRender);
 app.set('view engine', 'jsx');
@@ -38,6 +37,8 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 app.use('/login', authRouter);
+app.use('/addCard', addRouter);
+app.use('/candidat', authRouter);
 
 app.use((req, res, next) => {
   res.locals.path = req.originalUrl;

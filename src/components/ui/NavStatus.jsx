@@ -1,5 +1,5 @@
 import React from 'react';
-import OneStatus from './OneStatus';
+import OneStatus from '../OneStatus';
 
 export default function NavStatus({ allStatus }) {
   return (

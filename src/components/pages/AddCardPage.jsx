@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 
-export default function cardPage({ groupInput, inputHandler, submitHandler }) {
+export default function cardPage({
+  groupInput, inputHandler, submitHandler, cardCandidate,
+}) {
+  console.log('----', cardCandidate);
   return (
+    
     <div className="container">
       <div className="row mt-5">
         <h4>Добавить кандидата</h4>

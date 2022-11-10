@@ -20,10 +20,10 @@ export default function App() {
           <VakList />
         </div>
 
-        <div className="col-10">
+        {/* <div className="col-10">
           <NavStatus />
           <CandidateList />
-        </div>
+        </div> */}
 
       </div>
       <Routes>

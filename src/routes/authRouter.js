@@ -1,13 +1,13 @@
 import express from 'express';
 import { hash, compare } from 'bcrypt';
-import { User } from '../../../db/models';
+import { User } from '../../db/models';
 
 const router = express.Router();
 
 router.post('/auth', async (req, res) => {
   // console.log(req.body)
   // req.body - объект с данными пользователя
-  const { name, email, password } = req.body;
+  const { email, password } = req.body;
   // если email уже имеется в базе данных, вернет статус ошибки
   if (!email || !password) return res.sendStatus(418);
   // находим пользователя в БД по email
@@ -25,6 +25,7 @@ router.post('/auth', async (req, res) => {
 });
 
 router.post('/reg', async (req, res) => {
+  console.log(req.body);
   // req.body - объект с данными пользователя
   const { name, email, password } = req.body;
   // если не введен email , то вернет статус ошибки

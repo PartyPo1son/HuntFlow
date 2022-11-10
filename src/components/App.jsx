@@ -6,9 +6,12 @@ import MainPage from './pages/MainPage';
 import ThanksPage from './pages/ThanksPage';
 import Reg from './Reg';
 import Auth from './Auth';
+import CandidatCards from './CandidatCards';
 
-export default function App({ user }) {
-// РАБОТА С ДОБАВЛЕНИЕМ КАНДИДАТА
+export default function App({
+  candidat, allStatus, allCandidates, vacansy, user,
+}) {
+  // РАБОТА С ДОБАВЛЕНИЕМ КАНДИДАТА
   const [groupInput, setGroupInput] = useState({
     first_name: '',
     last_name: '',
@@ -21,32 +24,39 @@ export default function App({ user }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const response = await fetch('/addCard', {
+    fetch('/addCard', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(groupInput),
-    });
-    if (response.ok) {
-      window.location.href = '/addCard/thanks';
-    }
+    })
+      .then((res) => {
+        if (res.ok) {
+          window.location.href = '/addCard/thanks';
+          return res.json();
+        }
+      })
+      .then((data) => {
+        window.location.href = `/addCard/${data.id}`;
+      });
   };
 
   return (
-    <>
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <Navbar user={user} />
-          </div>
+    <div className="container">
+      <div className="row">
+        <div className="col-12">
+          <Navbar user={user} />
+
         </div>
       </div>
+
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage vacansy={vacansy} allStatus={allStatus} allCandidates={allCandidates} />} />
         <Route path="/addCard" element={<AddCardPage groupInput={groupInput} inputHandler={inputHandler} submitHandler={submitHandler} />} />
-        <Route path="/addCard/thanks" element={<ThanksPage />} />
+        <Route path="/addCard/:id" element={<ThanksPage candidat={candidat} />} />
+        <Route path="/candidat/:id" element={<CandidatCards candidat={candidat} />} />
         <Route path="/reg" element={<Reg />} />
         <Route path="/auth" element={<Auth />} />
       </Routes>
-    </>
+    </div>
   );
 }

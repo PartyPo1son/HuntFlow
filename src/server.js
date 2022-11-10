@@ -4,16 +4,18 @@ import morgan from 'morgan';
 import session from 'express-session';
 import store from 'session-file-store';
 import path from 'path';
+import { where } from 'sequelize';
 import jsxRender from './components/utils/jsxRender';
-import { Stage } from '../db/models';
+import { Stage, Candidate, Vacansy } from '../db/models';
 import addRouter from './routes/addRouter';
 import authRouter from './routes/authRouter';
+import cardRouter from './routes/cardRouter';
 
 require('dotenv').config();
 
 const PORT = process.env.SERVER_PORT || 3000;
 const app = express();
-// const PORT = 3000;
+
 
 app.engine('jsx', jsxRender);
 app.set('view engine', 'jsx');
@@ -39,6 +41,8 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 app.use('/login', authRouter);
+app.use('/addCard', addRouter);
+app.use('/candidat', cardRouter);
 
 app.use((req, res, next) => {
   res.locals.path = req.originalUrl;
@@ -47,12 +51,24 @@ app.use((req, res, next) => {
 });
 
 app.get('/', async (req, res) => {
-  const initState = { path: req.originalUrl };
+  const vacansy = await Vacansy.findAll();
+  const allStatus = await Stage.findAll();
+  const allCandidates = await Candidate.findAll();
+  const initState = { allStatus, allCandidates, vacansy };
+  console.log(allStatus);
   res.render('Layout', initState);
 });
 
 app.get('/reg/', (req, res) => {
   res.render('Layout');
+});
+
+app.get('/candidates/:id', async (req, res) => {
+  const { id } = req.params;
+  const paramCandidates = await Candidate.findAll({
+    where: { vacancy_id: id },
+  });
+  res.json(paramCandidates);
 });
 
 app.get('/auth', (req, res) => {

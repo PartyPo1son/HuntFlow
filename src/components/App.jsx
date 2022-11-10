@@ -3,7 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import CandidateList from './CandidateList';
 import Navbar from './Navbar';
 import NavStatus from './NavStatus';
+import Reg from './Reg';
 import VakList from './VakList';
+import Auth from './Auth';
 
 export default function App() {
   return (
@@ -18,16 +20,15 @@ export default function App() {
           <VakList />
         </div>
 
-        <div className="col-10">
+        {/* <div className="col-10">
           <NavStatus />
           <CandidateList />
-        </div>
+        </div> */}
 
       </div>
       <Routes>
-        {/* <Route path="/" element={<MainPage />} />
-        <Route path="/posts" element={<PostsPage allPosts={allPosts} />} /> */}
-
+        <Route path="/reg" element={<Reg />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </div>
   );

@@ -8,6 +8,7 @@ import jsxRender from './components/utils/jsxRender';
 import { Stage, Candidate, Vacansy } from '../db/models';
 import addRouter from './routes/addRouter';
 import authRouter from './routes/authRouter';
+import cardRouter from './routes/cardRouter';
 
 require('dotenv').config();
 
@@ -39,7 +40,7 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use('/login', authRouter);
 app.use('/addCard', addRouter);
-app.use('/candidat', authRouter);
+app.use('/candidat', cardRouter);
 
 app.use((req, res, next) => {
   res.locals.path = req.originalUrl;

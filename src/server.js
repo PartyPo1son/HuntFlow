@@ -4,9 +4,13 @@ import session from 'express-session';
 import store from 'session-file-store';
 import path from 'path';
 import jsxRender from './components/utils/jsxRender';
+import { Stage } from '../db/models';
 import addRouter from './routes/addRouter';
 import authRouter from './routes/authRouter';
 
+require('dotenv').config();
+
+const PORT = process.env.SERVER_PORT || 3000;
 const app = express();
 const PORT = 3000;
 
@@ -41,15 +45,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/addCard', addRouter);
-
-
 app.get('/', async (req, res) => {
   const initState = { path: req.originalUrl };
   res.render('Layout', initState);
 });
 
-app.get('/reg', (req, res) => {
+app.get('/reg/', (req, res) => {
   res.render('Layout');
 });
 

@@ -3,9 +3,8 @@ import React from 'react';
 export default function VakList() {
   return (
     <div className="list-group">
-      <button type="button" className="list-group-item list-group-item-action active" aria-current="true">
-        Информатик
-      </button>
+      <h4>Мои вакансии</h4>
+      <button type="button" className="list-group-item list-group-item-action">Информатик</button>
       <button type="button" className="list-group-item list-group-item-action">Разработчик</button>
       <button type="button" className="list-group-item list-group-item-action">Трудовик</button>
       <button type="button" className="list-group-item list-group-item-action">Президент</button>

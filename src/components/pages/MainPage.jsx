@@ -12,7 +12,7 @@ export default function MainPage() {
         </div>
 
         <div className="col-10">
-          <NavStatus />
+          {/* <NavStatus /> */}
           <CandidateList />
 
         </div>

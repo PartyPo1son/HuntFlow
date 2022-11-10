@@ -6,6 +6,7 @@ import MainPage from './pages/MainPage';
 import ThanksPage from './pages/ThanksPage';
 import Reg from './Reg';
 import Auth from './Auth';
+import CandidatCards from './CandidatCards';
 
 export default function App() {
 // РАБОТА С ДОБАВЛЕНИЕМ КАНДИДАТА
@@ -44,6 +45,7 @@ export default function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/addCard" element={<AddCardPage groupInput={groupInput} inputHandler={inputHandler} submitHandler={submitHandler} />} />
         <Route path="/addCard/thanks" element={<ThanksPage />} />
+        <Route path="/candidat" element={<CandidatCards />} />
         <Route path="/reg" element={<Reg />} />
         <Route path="/auth" element={<Auth />} />
       </Routes>

@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
+
 import session from 'express-session';
 import store from 'session-file-store';
 import path from 'path';
@@ -12,7 +13,7 @@ require('dotenv').config();
 
 const PORT = process.env.SERVER_PORT || 3000;
 const app = express();
-const PORT = 3000;
+// const PORT = 3000;
 
 app.engine('jsx', jsxRender);
 app.set('view engine', 'jsx');

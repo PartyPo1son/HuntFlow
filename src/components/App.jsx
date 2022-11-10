@@ -7,7 +7,7 @@ import ThanksPage from './pages/ThanksPage';
 import Reg from './Reg';
 import Auth from './Auth';
 
-export default function App() {
+export default function App({ user }) {
 // РАБОТА С ДОБАВЛЕНИЕМ КАНДИДАТА
   const [groupInput, setGroupInput] = useState({
     first_name: '',
@@ -36,7 +36,7 @@ export default function App() {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <Navbar />
+            <Navbar user={user} />
           </div>
         </div>
       </div>

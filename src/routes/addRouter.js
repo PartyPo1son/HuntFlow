@@ -9,9 +9,16 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  await Candidate.create({ ...req.body, stage_id: 1 });
+  const candidat = await Candidate.create({ ...req.body, stage_id: 1 });
+  console.log(candidat);
+  res.json(candidat);
+});
 
-  res.sendStatus(200);
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const candidat = await Candidate.findByPk(id);
+  const initState = { path: req.originalUrl, candidat };
+  res.render('Layout', initState);
 });
 
 router.get('/thanks', async (req, res) => {

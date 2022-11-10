@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CandidatCards() {
+export default function CandidatCards({ candidat }) {
   return (
 
     <div className="container">
@@ -10,17 +10,21 @@ export default function CandidatCards() {
             <div className="card-block">
               <div className="row">
                 <div className="col-md-8 col-sm-8">
-                  <h2 className="card-title">ФИО: Иван Иванов</h2>
+                  <h2 className="card-title">
+                    ФИО:
+                    {' '}
+                    {candidat.first_name}
+                  </h2>
                   <p className="card-text">
                     <strong>Возраст:</strong>
                     {' '}
-                    29
+                    {candidat.age}
                     {' '}
                   </p>
                   <p className="card-text">
                     <strong>Город</strong>
                     {' '}
-                    Москва
+                    {candidat.city}
                     {' '}
                   </p>
                   <p className="card-text">
@@ -33,7 +37,7 @@ export default function CandidatCards() {
                   <p>
                     <strong>Этап</strong>
 
-                    <span className="badge bg-info ml-3">Интервью</span>
+                    <span className="badge bg-info ml-3">{candidat.stage_id}</span>
 
                   </p>
                 </div>

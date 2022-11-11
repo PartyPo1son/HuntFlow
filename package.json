@@ -19,11 +19,12 @@
   },
   "homepage": "https://github.com/KardopoloFF/web-flashcards-challange-ssr-msk#readme",
   "devDependencies": {
-    "@babel/node": "^7.20.0",
+    "@babel/node": "^7.20.2",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@faker-js/faker": "^7.6.0",
+    "@types/node": "^18.11.9",
     "babel-loader": "^9.1.0",
     "eslint": "^8.26.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -32,7 +33,8 @@
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "morgan": "^1.10.0",
-    "webpack": "^5.74.0",
+    "sequelize-cli": "^6.5.2",
+    "webpack": "^5.75.0",
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
@@ -47,7 +49,6 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.3",
     "sequelize": "^6.25.5",
-    "sequelize-cli": "^6.5.2",
     "session-file-store": "^1.5.0"
   }
 }

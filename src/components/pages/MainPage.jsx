@@ -26,21 +26,22 @@ export default function MainPage({
       .then((data) => setCands(data));
   };
 
-  //= ================
   const [candidat, setCandidat] = useState();
   const candidatHandler = (id) => {
     console.log('hell');
     setCandidat(cands.find((el) => el.id === id));
   };
-    //= ==================
   const delitCardHandler = (id) => {
     console.log('DELETE', id);
     fetch(`/delete/${id}`, { method: 'DELETE' })
       .then(() => setCands((prev) => prev.filter((el) => el.id !== id)))
       .catch(console.log);
   };
+
+
+
   console.log('cands', cands);
-  //= ====================
+
   const editHandler = async (id, first_name, age, city) => {
     const response2 = await fetch(`/stage/candidate/edit/${id}`, {
       method: 'PATCH',
@@ -54,21 +55,26 @@ export default function MainPage({
       console.log('==============================', data);
     }
   };
+
   return (
-    <div>
-      <div className="row">
-        <div className="col-2">
+    <>
+      <div className="">
+        <NavStatus cands={cands} candsNum={candsNum} allStatus={allStatus} statusHandler={statusHandler} />
+      </div>
+
+      <div className="container" style={{ display: 'flex' }}>
+
+        <div className="col-sm-2">
           <VakList vacansy={vacansy} vacansyHandler={vacansyHandler} />
         </div>
-        <div className="col-10">
-          <NavStatus cands={cands} candsNum={candsNum} allStatus={allStatus} statusHandler={statusHandler} />
-        </div>
-      </div>
-      <div className="col-10">
 
-        <div>
+        <div className="col-sm-5">
           <CandidateList candidatHandler={candidatHandler} allCandidates={cands} />
         </div>
+
+        <div className="col-sm-5" style={{width:'87%'}}>
+          <CandidatCards delitCardHandler={delitCardHandler} candidat={candidat} />
+
         <div>
           <CandidatCards
             setCands={setCands}
@@ -76,9 +82,9 @@ export default function MainPage({
             delitCardHandler={delitCardHandler}
             candidat={candidat}
           />
+
         </div>
       </div>
-
-    </div>
+    </>
   );
 }

@@ -12,6 +12,7 @@ export default function Navbar({ user }) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
             <div className="navbar-nav">
               { !user ? (
                 <>
@@ -33,6 +34,7 @@ export default function Navbar({ user }) {
                 </div>
               ) }
             </div>
+
           </ul>
         </div>
       </div>

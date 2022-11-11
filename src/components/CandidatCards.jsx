@@ -1,13 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function CandidatCards({ candidat, editHandler, delitCardHandler }) {
+export default function CandidatCards({
+  candidat, editHandler, delitCardHandler, setCands,
+}) {
   const [edit, setEdit] = useState(false);
-  const [candidateState, setCandidateState] = useState(candidat);
+  const [candidateState, setCandidateState] = useState({});
+  const [input, setInput] = useState({
+    first_name: '',
+    age: '',
+    city: '',
+  });
+  console.log(input);
   const nextHandler = (id) => {
     fetch(`/stage/candidate/${id}`)
       .then();
   };
-  console.log(candidat);
+  useEffect(() => {
+    setCandidateState(candidat);
+  }, [candidat]);
+  const candidatHandler = (e) => {
+    setCandidateState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  // const saveTitle = () => {
+  //   editHandler();
+  //   setEditing(false);
+  // };
+  const candidatSubmit = (e) => {
+    e.preventDefault();
+    console.log(candidateState);
+    fetch(`/stage/candidate/edit/${candidateState?.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(candidateState),
+    })
+      .then(() => {
+        setCands((prev) => prev.map((el) => {
+          if (el.id === candidateState?.id) {
+            return candidateState;
+          } return el;
+        }));
+        setEdit(false);
+      });
+  };
   return (
 
     <div className="container">
@@ -24,7 +60,33 @@ export default function CandidatCards({ candidat, editHandler, delitCardHandler 
                       {' '}
                       {candidateState?.first_name}
                     </h2>
-                  ) : <input onChange={editHandler} type="" placeholder="введи имя" /> }
+                  ) : (
+                    <form onSubmit={candidatSubmit}>
+                      <input
+                        name="first_name"
+                        onChange={candidatHandler}
+                        value={candidateState.first_name || ''}
+                        type=""
+                        placeholder="введи имя"
+                      />
+                      <input
+                        name="age"
+                        onChange={candidatHandler}
+                        value={candidateState.age || ''}
+                        type=""
+                        placeholder="введи имя"
+                      />
+                      <input
+                        name="city"
+                        onChange={candidatHandler}
+                        value={candidateState.city || ''}
+                        type=""
+                        placeholder="введи имя"
+                      />
+                      <button className="btn btn-outline-success btn-sm" type="submit">save</button>
+
+                    </form>
+                  )}
 
                   {!edit ? (
                     <p className="card-text">
@@ -33,7 +95,11 @@ export default function CandidatCards({ candidat, editHandler, delitCardHandler 
                       {candidat?.age}
                       {' '}
                     </p>
-                  ) : <input onChange={editHandler} type="" placeholder="введи вощраст" /> }
+                  ) : (
+                    <>
+
+                    </>
+                  )}
 
                   {!edit ? (
                     <p className="card-text">
@@ -42,7 +108,11 @@ export default function CandidatCards({ candidat, editHandler, delitCardHandler 
                       {candidat?.city}
                       {' '}
                     </p>
-                  ) : <input onChange={editHandler} type="" placeholder="введи город" />}
+                  ) : (
+                    <>
+
+                    </>
+                  )}
 
                   <p className="card-text">
                     <strong>Вакансия:</strong>

@@ -95,7 +95,7 @@ app.get('/candidates/:id', async (req, res) => {
 });
 
 app.patch('/stage/candidate/edit/:id', async (req, res) => {
-  console.log(req.body);
+  console.log('patch',req.body);
   const { id } = req.params;
   const { first_name, age, city } = req.body;
   const candById = await Candidate.findOne({ where: { id } });

@@ -71,6 +71,7 @@ export default function MainPage({
         </div>
         <div>
           <CandidatCards
+            setCands={setCands}
             editHandler={editHandler}
             delitCardHandler={delitCardHandler}
             candidat={candidat}

@@ -16,7 +16,6 @@ require('dotenv').config();
 const PORT = process.env.SERVER_PORT || 3000;
 const app = express();
 
-
 app.engine('jsx', jsxRender);
 app.set('view engine', 'jsx');
 app.set('views', path.join(__dirname, 'components'));
@@ -57,6 +56,13 @@ app.get('/', async (req, res) => {
   const initState = { allStatus, allCandidates, vacansy };
   console.log(allStatus);
   res.render('Layout', initState);
+});
+
+app.delete('/delete/:id', async (req, res) => {
+  const { id } = req.params;
+ const delCand = await Candidate.destroy({ where: { id } });
+  // res.sendStatus(200);
+  console.log('Fetch Delete', id, delCand);
 });
 
 app.get('/reg/', (req, res) => {

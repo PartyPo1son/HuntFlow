@@ -54,15 +54,15 @@ app.get('/', async (req, res) => {
   const allStatus = await Stage.findAll();
   const allCandidates = await Candidate.findAll({ include: [Stage, Vacansy] });
   const initState = { allStatus, allCandidates, vacansy };
-  console.log(allStatus);
+  // console.log(allStatus);
   res.render('Layout', initState);
 });
 
 app.delete('/delete/:id', async (req, res) => {
   const { id } = req.params;
- const delCand = await Candidate.destroy({ where: { id } });
-  // res.sendStatus(200);
-  console.log('Fetch Delete', id, delCand);
+  const delCand = await Candidate.destroy({ where: { id } });
+  res.sendStatus(200);
+  // console.log('Fetch Delete', id, delCand);
 });
 
 app.get('/reg/', (req, res) => {
@@ -94,8 +94,16 @@ app.get('/candidates/:id', async (req, res) => {
   res.json(paramCandidates);
 });
 
-app.get('/stage/candidate/:id', async (req, res) => {
+app.patch('/stage/candidate/edit/:id', async (req, res) => {
+  console.log(req.body);
   const { id } = req.params;
+  const { first_name, age, city } = req.body;
+  const candById = await Candidate.findOne({ where: { id } });
+  candById.first_name = first_name;
+  candById.age = age;
+  candById.city = city;
+  candById.save();
+  res.json(candById);
 });
 
 app.get('/logout', (req, res) => {

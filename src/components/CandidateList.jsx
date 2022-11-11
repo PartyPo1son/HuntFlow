@@ -5,7 +5,7 @@ export default function CandidateList({ allCandidates, candidatHandler }) {
   return (
     <div>
 
-      {allCandidates.map((el) => (
+      {allCandidates?.map((el) => (
         <CandCard
           key={el.id}
           oneCand={el}

@@ -5,7 +5,7 @@ import NavStatus from '../ui/NavStatus';
 import VakList from '../ui/VakList';
 
 export default function MainPage({
-  candidat, allStatus, allCandidates, vacansy, setOneCand,
+  allStatus, allCandidates, vacansy, setOneCand,
 }) {
   const [cands, setCands] = useState(allCandidates || []);
   const [candsNum, setCandsNum] = useState(allCandidates || []);
@@ -25,6 +25,22 @@ export default function MainPage({
       .then((res) => res.json())
       .then((data) => setCands(data));
   };
+
+  //= ================
+  const [candidat, setCandidat] = useState();
+  const candidatHandler = (id) => {
+    console.log('hell');
+    setCandidat(cands.find((el) => el.id === id));
+  };
+    //= ==================
+  const delitCardHandler = (id) => {
+    console.log('DELETE');
+    fetch(`/delete/${id}`, { method: 'DELETE' })
+      .then(() => setCands((prev) => prev.filter((el) => el.id != id)))
+      .catch(console.log);
+  };
+
+  //= ====================
   return (
     <div>
       <div className="row">
@@ -38,10 +54,10 @@ export default function MainPage({
       <div className="col-10">
 
         <div>
-          <CandidateList allCandidates={cands} />
+          <CandidateList candidatHandler={candidatHandler} allCandidates={cands} />
         </div>
         <div>
-          <CandidatCards candidat={candidat} />
+          <CandidatCards delitCardHandler={delitCardHandler} candidat={candidat} />
         </div>
       </div>
 

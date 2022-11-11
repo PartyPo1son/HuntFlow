@@ -17,18 +17,18 @@ export default function CandidatCards({ candidat }) {
                   <h2 className="card-title">
                     ФИО:
                     {' '}
-                    {candidat.first_name}
+                    {candidat?.first_name}
                   </h2>
                   <p className="card-text">
                     <strong>Возраст:</strong>
                     {' '}
-                    {candidat.age}
+                    {candidat?.age}
                     {' '}
                   </p>
                   <p className="card-text">
                     <strong>Город</strong>
                     {' '}
-                    {candidat.city}
+                    {candidat?.city}
                     {' '}
                   </p>
                   <p className="card-text">
@@ -41,7 +41,7 @@ export default function CandidatCards({ candidat }) {
                   <p>
                     <strong>Этап</strong>
 
-                    <span className="badge bg-info ml-3">{candidat.stage_id}</span>
+                    <span className="badge bg-info ml-3">{candidat?.stage_id}</span>
 
                   </p>
                 </div>
@@ -51,7 +51,7 @@ export default function CandidatCards({ candidat }) {
                 <div className="row">
                   <div className="col-3">
                     <button onClick={() => nextHandler(candidat.id)} type="button" className="btn btn-outline-secondary">На следующий этап</button>
-                    <button type="button" className="btn btn-outline-danger">Х</button>
+                    <button onClick={() => delitCardHandler(candidat?.id)} type="button" className="btn btn-outline-danger">Х</button>
                   </div>
                 </div>
               </div>

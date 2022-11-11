@@ -58,6 +58,13 @@ app.get('/', async (req, res) => {
   res.render('Layout', initState);
 });
 
+app.delete('/delete/:id', async (req, res) => {
+  const { id } = req.params;
+ const delCand = await Candidate.destroy({ where: { id } });
+  // res.sendStatus(200);
+  console.log('Fetch Delete', id, delCand);
+});
+
 app.get('/reg/', (req, res) => {
   res.render('Layout');
 });

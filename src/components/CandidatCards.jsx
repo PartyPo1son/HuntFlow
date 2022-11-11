@@ -1,6 +1,10 @@
 import React from 'react';
 
-export default function CandidatCards({ candidat, delitCardHandler }) {
+export default function CandidatCards({ candidat }) {
+  const nextHandler = (id) => {
+    fetch(`/stage/candidate/${id}`)
+      .then();
+  };
   return (
 
     <div className="container">
@@ -46,7 +50,7 @@ export default function CandidatCards({ candidat, delitCardHandler }) {
                 </div>
                 <div className="row">
                   <div className="col-3">
-                    <button type="button" className="btn btn-outline-secondary">Edit</button>
+                    <button onClick={() => nextHandler(candidat.id)} type="button" className="btn btn-outline-secondary">На следующий этап</button>
                     <button onClick={() => delitCardHandler(candidat?.id)} type="button" className="btn btn-outline-danger">Х</button>
                   </div>
                 </div>

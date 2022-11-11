@@ -94,6 +94,10 @@ app.get('/candidates/:id', async (req, res) => {
   res.json(paramCandidates);
 });
 
+app.get('/stage/candidate/:id', async (req, res) => {
+  const { id } = req.params;
+});
+
 app.get('/logout', (req, res) => {
   res.clearCookie('user_sid');
   req.session.destroy();

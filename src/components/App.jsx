@@ -41,7 +41,7 @@ export default function App({
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{ backgroundColor: '#fcfeff' }}>
       <div className="row">
         <div className="col-12">
           <Navbar user={user} />

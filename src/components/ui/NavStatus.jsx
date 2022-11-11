@@ -6,8 +6,8 @@ export default function NavStatus({ allStatus, statusHandler }) {
     <ul className="nav nav-tabs">
 
       {allStatus.map((el) => (
-        <li className="nav-item">
-          <button key={el.id} type="button" onClick={() => statusHandler(el.id)} className="nav-link">
+        <li className="nav-item ">
+          <button key={el.id} type="button" onClick={() => statusHandler(el.id)} className="nav-link ">
             {el.title}
             {' '}
           </button>

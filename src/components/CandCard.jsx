@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function CandCard({ oneCand }) {
   return (
-    <div className="card mb-3" style={{ maxWidth: '540px' }}>
+    <div className="card border-dark mb-3" style={{ maxWidth: '540px' }}>
       <div className="row g-0">
         <div className="col-md-4">
           <img src="https://kartinkin.net/pics/uploads/posts/2022-09/thumbs/1662405729_4-kartinkin-net-p-ikonka-cheloveka-minimalizm-vkontakte-4.png" className="img-fluid rounded-start" alt="..." />

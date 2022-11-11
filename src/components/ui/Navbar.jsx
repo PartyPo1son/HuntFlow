@@ -3,14 +3,16 @@ import React from 'react';
 export default function Navbar({ user }) {
   console.log(user, 'user navbar');
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
+    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#e3f4fc' }}>
       <div className="container-fluid">
         <a className="navbar-brand" href="/">HuntFlow</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
+
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
             { !user ? (
               <>
                 <li className="nav-item">
@@ -42,6 +44,7 @@ export default function Navbar({ user }) {
                 </li>
               </div>
             ) }
+
           </ul>
 
         </div>

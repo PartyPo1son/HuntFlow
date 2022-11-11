@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default function CandidatCards({ candidat }) {
+export default function CandidatCards({ candidat, editHandler, delitCardHandler }) {
+  const [edit, setEdit] = useState(false);
+  const [candidateState, setCandidateState] = useState(candidat);
   const nextHandler = (id) => {
     fetch(`/stage/candidate/${id}`)
       .then();
   };
+  console.log(candidat);
   return (
 
     <div className="container">
@@ -14,23 +17,33 @@ export default function CandidatCards({ candidat }) {
             <div className="card-block">
               <div className="row">
                 <div className="col-md-8 col-sm-8">
-                  <h2 className="card-title">
-                    ФИО:
-                    {' '}
-                    {candidat?.first_name}
-                  </h2>
-                  <p className="card-text">
-                    <strong>Возраст:</strong>
-                    {' '}
-                    {candidat?.age}
-                    {' '}
-                  </p>
-                  <p className="card-text">
-                    <strong>Город</strong>
-                    {' '}
-                    {candidat?.city}
-                    {' '}
-                  </p>
+
+                  {!edit ? (
+                    <h2 className="card-title">
+                      Имя
+                      {' '}
+                      {candidateState?.first_name}
+                    </h2>
+                  ) : <input onChange={editHandler} type="" placeholder="введи имя" /> }
+
+                  {!edit ? (
+                    <p className="card-text">
+                      <strong>Возраст:</strong>
+                      {' '}
+                      {candidat?.age}
+                      {' '}
+                    </p>
+                  ) : <input onChange={editHandler} type="" placeholder="введи вощраст" /> }
+
+                  {!edit ? (
+                    <p className="card-text">
+                      <strong>Город</strong>
+                      {' '}
+                      {candidat?.city}
+                      {' '}
+                    </p>
+                  ) : <input onChange={editHandler} type="" placeholder="введи город" />}
+
                   <p className="card-text">
                     <strong>Вакансия:</strong>
                     {' '}
@@ -50,7 +63,9 @@ export default function CandidatCards({ candidat }) {
                 </div>
                 <div className="row">
                   <div className="col-3">
-                    <button onClick={() => nextHandler(candidat.id)} type="button" className="btn btn-outline-secondary">На следующий этап</button>
+                    {!edit ? <button onClick={() => setEdit(true)} type="button" className="btn btn-outline-secondary">Edit</button> : <button onClick={() => { setEdit(false); setTitle(candidat?.age); }} type="button" className="btn btn-outline-secondary">close</button>}
+
+                    <button onClick={() => nextHandler(candidat?.id)} type="button" className="btn btn-outline-secondary">На следующий этап</button>
                     <button onClick={() => delitCardHandler(candidat?.id)} type="button" className="btn btn-outline-danger">Х</button>
                   </div>
                 </div>

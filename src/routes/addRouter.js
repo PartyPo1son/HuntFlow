@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const candidat = await Candidate.create({ ...req.body, stage_id: 1 });
-  console.log(candidat);
+  // console.log(candidat);
   res.json(candidat);
 });
 

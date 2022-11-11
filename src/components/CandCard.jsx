@@ -1,8 +1,6 @@
 import React from 'react';
 
 export default function CandCard({ oneCand, candidatHandler }) {
-  console.log(oneCand);
-
   return (
     <div onClick={() => candidatHandler(oneCand.id)} className="card border-dark mb-3" style={{ maxWidth: '540px' }}>
       <div className="row g-0">

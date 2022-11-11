@@ -17,26 +17,33 @@ export default function CandidatCards({ candidat, editHandler, delitCardHandler 
             <div className="card-block">
               <div className="row">
                 <div className="col-md-8 col-sm-8">
-                  <h2 className="card-title">
-                    Имя
-                    {' '}
-                    {candidateState?.first_name}
-                    {!edit ? <button onClick={() => setEdit(true)} type="button" className="btn btn-outline-secondary">Edit</button> : <button onClick={() => { setEdit(false); setTitle(candidat?.age); }} type="button" className="btn btn-outline-secondary">close</button>}
-                  </h2>
 
-                  {!edit ? }
-                  <p className="card-text">
-                    <strong>Возраст:</strong>
-                    {' '}
-                    {candidat?.age}
-                    {' '}
-                  </p>
-                  <p className="card-text">
-                    <strong>Город</strong>
-                    {' '}
-                    {candidat?.city}
-                    {' '}
-                  </p>
+                  {!edit ? (
+                    <h2 className="card-title">
+                      Имя
+                      {' '}
+                      {candidateState?.first_name}
+                    </h2>
+                  ) : <input onChange={editHandler} type="" placeholder="введи имя" /> }
+
+                  {!edit ? (
+                    <p className="card-text">
+                      <strong>Возраст:</strong>
+                      {' '}
+                      {candidat?.age}
+                      {' '}
+                    </p>
+                  ) : <input onChange={editHandler} type="" placeholder="введи вощраст" /> }
+
+                  {!edit ? (
+                    <p className="card-text">
+                      <strong>Город</strong>
+                      {' '}
+                      {candidat?.city}
+                      {' '}
+                    </p>
+                  ) : <input onChange={editHandler} type="" placeholder="введи город" />}
+
                   <p className="card-text">
                     <strong>Вакансия:</strong>
                     {' '}
@@ -46,7 +53,7 @@ export default function CandidatCards({ candidat, editHandler, delitCardHandler 
 
                   <p>
                     <strong>Этап</strong>
-                    {!edit ? 'span' : 'input'}
+
                     <span className="badge bg-info ml-3">{candidat?.stage_id}</span>
 
                   </p>
@@ -56,7 +63,7 @@ export default function CandidatCards({ candidat, editHandler, delitCardHandler 
                 </div>
                 <div className="row">
                   <div className="col-3">
-                    <button onClick={() => editHandler(candidat?.id)} type="button" className="btn btn-outline-secondary">Edit</button>
+                    {!edit ? <button onClick={() => setEdit(true)} type="button" className="btn btn-outline-secondary">Edit</button> : <button onClick={() => { setEdit(false); setTitle(candidat?.age); }} type="button" className="btn btn-outline-secondary">close</button>}
 
                     <button onClick={() => nextHandler(candidat?.id)} type="button" className="btn btn-outline-secondary">На следующий этап</button>
                     <button onClick={() => delitCardHandler(candidat?.id)} type="button" className="btn btn-outline-danger">Х</button>

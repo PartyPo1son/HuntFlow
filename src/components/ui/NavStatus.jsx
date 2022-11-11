@@ -8,20 +8,25 @@ export default function NavStatus({
   // console.log('ALLSTATUS', allStatus);
   // console.log('AAAAAAAAAAAAAAAAA', cands[0].Stage);
   return (
-    <ul className="nav nav-tabs">
+    <div className="row">
+      <ul className="nav nav-tabs col-12">
 
-      {allStatus.map((el, index) => (
-        <li className="nav-item" key={el.id}>
-          <button type="button" onClick={() => statusHandler(el.id)} className="nav-link">
-            {el.title}
-            {' '}
-            {/* <span className="badge text-bg-primary">{cands[0]?.Stage?.length}</span> */}
-            <span className="badge text-bg-primary">{(candsNum?.filter((elem) => elem.Stage?.title === allStatus[index].title).length)}</span>
-          </button>
+        <li>
+          <h4>Мои вакансии</h4>
         </li>
-      ))}
 
-    </ul>
+        {allStatus.map((el, index) => (
+          <li className="nav-item" key={el.id}>
+            <button type="button" onClick={() => statusHandler(el.id)} className="nav-link">
+              {el.title}
+              {' '}
+              {/* <span className="badge text-bg-primary">{cands[0]?.Stage?.length}</span> */}
+              <span className="badge text-bg-primary">{(candsNum?.filter((elem) => elem.Stage?.title === allStatus[index].title).length)}</span>
+            </button>
+          </li>
+        ))}
 
+      </ul>
+    </div>
   );
 }

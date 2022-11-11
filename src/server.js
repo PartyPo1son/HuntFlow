@@ -72,6 +72,9 @@ app.get('/reg/', (req, res) => {
 app.get('/auth', (req, res) => {
   res.render('Layout');
 });
+// {
+//   order: [['createdAt', 'DESC']],
+// }
 
 app.get('/candidates/vacancy/:vac/:id', async (req, res) => {
   const { vac, id } = req.params;

@@ -16,7 +16,6 @@ require('dotenv').config();
 const PORT = process.env.SERVER_PORT || 3000;
 const app = express();
 
-
 app.engine('jsx', jsxRender);
 app.set('view engine', 'jsx');
 app.set('views', path.join(__dirname, 'components'));
@@ -86,6 +85,10 @@ app.get('/candidates/:id', async (req, res) => {
   });
   // console.log('AAAAAAAAAAAA', paramCandidates);
   res.json(paramCandidates);
+});
+
+app.get('/stage/candidate/:id', async (req, res) => {
+  const { id } = req.params;
 });
 
 app.get('/logout', (req, res) => {

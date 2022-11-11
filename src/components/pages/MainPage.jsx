@@ -8,6 +8,7 @@ export default function MainPage({
   candidat, allStatus, allCandidates, vacansy, setOneCand,
 }) {
   const [cands, setCands] = useState(allCandidates || []);
+  const [candsNum, setCandsNum] = useState(allCandidates || []);
   const [filter, setFilter] = useState({ vacancy_id: null, stage_id: null });
   const vacansyHandler = (vak) => {
     fetch(`/candidates/${vak}`)
@@ -15,6 +16,7 @@ export default function MainPage({
       .then((data) => {
         setFilter({ vacancy_id: vak });
         setCands(data);
+        setCandsNum(data);
         console.log(cands);
       });
   };
@@ -30,7 +32,7 @@ export default function MainPage({
           <VakList vacansy={vacansy} vacansyHandler={vacansyHandler} />
         </div>
         <div className="col-10">
-          <NavStatus cands={cands} allStatus={allStatus} statusHandler={statusHandler} />
+          <NavStatus cands={cands} candsNum={candsNum} allStatus={allStatus} statusHandler={statusHandler} />
         </div>
       </div>
       <div className="col-10">

@@ -6,6 +6,7 @@ export default function NavStatus({ allStatus, statusHandler, cands }) {
   // console.log('AAAAAAAAAAAAAAAAA', cands[0].Stage);
   return (
     <ul className="nav nav-tabs">
+
       {allStatus.map((el) => (
         <li className="nav-item" key={el.id}>
           <button type="button" onClick={() => statusHandler(el.id)} className="nav-link">
@@ -16,6 +17,7 @@ export default function NavStatus({ allStatus, statusHandler, cands }) {
           </button>
         </li>
       ))}
+
     </ul>
 
   );

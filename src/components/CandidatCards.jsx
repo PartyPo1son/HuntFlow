@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default function CandidatCards({ candidat }) {
+export default function CandidatCards({ candidat, editHandler, delitCardHandler }) {
+  const [edit, setEdit] = useState(false);
+  const [candidateState, setCandidateState] = useState(candidat);
   const nextHandler = (id) => {
     fetch(`/stage/candidate/${id}`)
       .then();
   };
+  console.log(candidat);
   return (
 
     <div className="container">
@@ -15,10 +18,13 @@ export default function CandidatCards({ candidat }) {
               <div className="row">
                 <div className="col-md-8 col-sm-8">
                   <h2 className="card-title">
-                    ФИО:
+                    Имя
                     {' '}
-                    {candidat?.first_name}
+                    {candidateState?.first_name}
+                    {!edit ? <button onClick={() => setEdit(true)} type="button" className="btn btn-outline-secondary">Edit</button> : <button onClick={() => { setEdit(false); setTitle(candidat?.age); }} type="button" className="btn btn-outline-secondary">close</button>}
                   </h2>
+
+                  {!edit ? }
                   <p className="card-text">
                     <strong>Возраст:</strong>
                     {' '}
@@ -40,7 +46,7 @@ export default function CandidatCards({ candidat }) {
 
                   <p>
                     <strong>Этап</strong>
-
+                    {!edit ? 'span' : 'input'}
                     <span className="badge bg-info ml-3">{candidat?.stage_id}</span>
 
                   </p>
@@ -50,7 +56,9 @@ export default function CandidatCards({ candidat }) {
                 </div>
                 <div className="row">
                   <div className="col-3">
-                    <button onClick={() => nextHandler(candidat.id)} type="button" className="btn btn-outline-secondary">На следующий этап</button>
+                    <button onClick={() => editHandler(candidat?.id)} type="button" className="btn btn-outline-secondary">Edit</button>
+
+                    <button onClick={() => nextHandler(candidat?.id)} type="button" className="btn btn-outline-secondary">На следующий этап</button>
                     <button onClick={() => delitCardHandler(candidat?.id)} type="button" className="btn btn-outline-danger">Х</button>
                   </div>
                 </div>

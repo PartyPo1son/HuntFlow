@@ -34,13 +34,26 @@ export default function MainPage({
   };
     //= ==================
   const delitCardHandler = (id) => {
-    console.log('DELETE');
+    console.log('DELETE', id);
     fetch(`/delete/${id}`, { method: 'DELETE' })
-      .then(() => setCands((prev) => prev.filter((el) => el.id != id)))
+      .then(() => setCands((prev) => prev.filter((el) => el.id !== id)))
       .catch(console.log);
   };
-
+  console.log('cands', cands);
   //= ====================
+  const editHandler = async (id, first_name, age, city) => {
+    const response2 = await fetch(`/stage/candidate/edit/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ first_name, age, city }),
+    });
+    if (response2.ok) {
+      const data = await response2.json();
+      console.log('==============================', data);
+    }
+  };
   return (
     <div>
       <div className="row">
@@ -57,7 +70,11 @@ export default function MainPage({
           <CandidateList candidatHandler={candidatHandler} allCandidates={cands} />
         </div>
         <div>
-          <CandidatCards delitCardHandler={delitCardHandler} candidat={candidat} />
+          <CandidatCards
+            editHandler={editHandler}
+            delitCardHandler={delitCardHandler}
+            candidat={candidat}
+          />
         </div>
       </div>
 

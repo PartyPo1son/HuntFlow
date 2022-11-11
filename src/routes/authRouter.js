@@ -25,7 +25,7 @@ router.post('/auth', async (req, res) => {
 });
 
 router.post('/reg', async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   // req.body - объект с данными пользователя
   const { name, email, password } = req.body;
   // если не введен email , то вернет статус ошибки

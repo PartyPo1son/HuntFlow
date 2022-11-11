@@ -49,9 +49,9 @@ app.use((req, res, next) => {
 });
 
 app.get('/', async (req, res) => {
-  const vacansy = await Vacansy.findAll();
+  const vacansy = await Vacansy.findAll({});
   const allStatus = await Stage.findAll();
-  const allCandidates = await Candidate.findAll();
+  const allCandidates = await Candidate.findAll({ include: [Stage, Vacansy] });
   const initState = { allStatus, allCandidates, vacansy };
   console.log(allStatus);
   res.render('Layout', initState);
@@ -72,6 +72,7 @@ app.get('/candidates/vacancy/:vac/:id', async (req, res) => {
       vacancy_id: vac,
       stage_id: id,
     },
+    include: Vacansy,
   });
   res.json(paramCandidates);
 });
@@ -79,9 +80,9 @@ app.get('/candidates/vacancy/:vac/:id', async (req, res) => {
 app.get('/candidates/:id', async (req, res) => {
   const { id } = req.params;
   const paramCandidates = await Candidate.findAll({
-    where: { vacancy_id: id }, include: Vacansy,
+    where: { vacancy_id: id }, include: [Stage, Vacansy],
   });
-  console.log(paramCandidates);
+  // console.log('AAAAAAAAAAAA', paramCandidates);
   res.json(paramCandidates);
 });
 

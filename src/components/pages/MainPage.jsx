@@ -15,6 +15,7 @@ export default function MainPage({
       .then((data) => {
         setFilter({ vacancy_id: vak });
         setCands(data);
+        console.log(cands);
       });
   };
   const statusHandler = (stage) => {
@@ -29,7 +30,7 @@ export default function MainPage({
           <VakList vacansy={vacansy} vacansyHandler={vacansyHandler} />
         </div>
         <div className="col-10">
-          <NavStatus allStatus={allStatus} statusHandler={statusHandler} />
+          <NavStatus cands={cands} allStatus={allStatus} statusHandler={statusHandler} />
         </div>
       </div>
       <div className="col-10">

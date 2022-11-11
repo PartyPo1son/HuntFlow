@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Navbar({ user }) {
-  console.log(user, 'user navbar');
+  // console.log(user, 'user navbar');
   return (
     <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#e3f4fc' }}>
       <div className="container-fluid">
@@ -12,41 +12,28 @@ export default function Navbar({ user }) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
-            { !user ? (
-              <>
-                <li className="nav-item">
-                  <a className="nav-link" href="/reg">Регистрация</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/auth">Авторизация</a>
-                </li>
-              </>
-            ) : (
-              <div>
-                <li className="nav-item">
-                  <a className="nav-link" href="/logout">Выход</a>
-                </li>
-
-                <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Выпадающий список
-                  </a>
-                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a className="dropdown-item" href="#">Действие</a></li>
-                    <li><a className="dropdown-item" href="#">Другое действие</a></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li><a className="dropdown-item" href="#">Что-то еще здесь</a></li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link disabled">Отключенная</a>
-                </li>
-              </div>
-            ) }
-
+            <div className="navbar-nav">
+              { !user ? (
+                <>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/reg">Регистрация</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/auth">Авторизация</a>
+                  </li>
+                </>
+              ) : (
+                <div>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/addCard">Добавить кандидата</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/logout">Выход</a>
+                  </li>
+                </div>
+              ) }
+            </div>
           </ul>
-
         </div>
       </div>
     </nav>

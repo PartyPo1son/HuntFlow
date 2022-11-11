@@ -14,7 +14,7 @@ export default function ThanksPage({ candidat }) {
         </div>
         <div className="row ">
           <div className="col-10">
-            <CandidatCards candidat={candidat} />
+            {/* <CandidatCards candidat={candidat} /> */}
             {' '}
 
           </div>

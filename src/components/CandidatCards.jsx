@@ -55,11 +55,11 @@ export default function CandidatCards({
                 <div className="col-md-8 col-sm-8">
 
                   {!edit ? (
-                    <h2 className="card-title">
+                    <p className="card-title">
                       Имя
                       {' '}
                       {candidateState?.first_name}
-                    </h2>
+                    </p>
                   ) : (
                     <form onSubmit={candidatSubmit}>
                       <input
@@ -86,6 +86,19 @@ export default function CandidatCards({
                       <button className="btn btn-outline-success btn-sm" type="submit">save</button>
 
                     </form>
+                  )}
+
+                  {!edit ? (
+                    <p className="card-text">
+                      <strong>Фамилия:</strong>
+                      {' '}
+                      {candidat?.last_name}
+                      {' '}
+                    </p>
+                  ) : (
+                    <>
+
+                    </>
                   )}
 
                   {!edit ? (
@@ -135,7 +148,7 @@ export default function CandidatCards({
                   <div className="col-3">
                     {!edit ? <button onClick={() => setEdit(true)} type="button" className="btn btn-outline-secondary">Edit</button> : <button onClick={() => { setEdit(false); setTitle(candidat?.age); }} type="button" className="btn btn-outline-secondary">close</button>}
 
-                    <button onClick={() => nextHandler(candidat?.id)} type="button" className="btn btn-outline-secondary">На следующий этап</button>
+                    <button onClick={() => nextHandler(candidat?.id)} type="button" className="btn btn-outline-secondary">этап+</button>
                     <button onClick={() => delitCardHandler(candidat?.id)} type="button" className="btn btn-outline-danger">Х</button>
                   </div>
                 </div>

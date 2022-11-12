@@ -38,8 +38,6 @@ export default function MainPage({
       .catch(console.log);
   };
 
-
-
   console.log('cands', cands);
 
   const editHandler = async (id, first_name, age, city) => {
@@ -72,11 +70,12 @@ export default function MainPage({
           <CandidateList candidatHandler={candidatHandler} allCandidates={cands} />
         </div>
 
-        <div className="col-sm-5" style={{width:'87%'}}>
-          <CandidatCards delitCardHandler={delitCardHandler} candidat={candidat} />
+        <div className="col-sm-5" style={{ width: '87%' }}>
+          {/* <CandidatCards delitCardHandler={delitCardHandler} candidat={candidat} /> */}
 
-        <div>
+          {/* <div> */}
           <CandidatCards
+            setCands={setCands}
             editHandler={editHandler}
             delitCardHandler={delitCardHandler}
             candidat={candidat}
@@ -84,6 +83,7 @@ export default function MainPage({
 
         </div>
       </div>
+      {/* </div> */}
     </>
   );
 }

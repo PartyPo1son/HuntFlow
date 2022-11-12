@@ -13,6 +13,10 @@ router.post('/', async (req, res) => {
   // console.log(candidat);
   res.json(candidat);
 });
+router.get('/thanks', async (req, res) => {
+  const initState = { path: req.originalUrl };
+  res.render('Layout', initState);
+});
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
@@ -21,9 +25,5 @@ router.get('/:id', async (req, res) => {
   res.render('Layout', initState);
 });
 
-router.get('/thanks', async (req, res) => {
-  const initState = { path: req.originalUrl };
-  res.render('Layout', initState);
-});
 
 export default router;

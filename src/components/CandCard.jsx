@@ -10,7 +10,7 @@ export default function CandCard({ oneCand, candidatHandler }) {
         <div className="col-md-8">
           <div className="card-body">
             <h5 className="card-title">{`${oneCand.first_name} ${oneCand.last_name}`}</h5>
-            <p className="card-text">{`Кандидат на вакансию ${oneCand?.Vacansy?.title}`}</p>
+            <p className="card-text">{`Кандидат на вакансию ${oneCand?.Vacansy?.title || 'Разработчик JS' || 'Manager'} `}</p>
             <p className="card-text"><small className="text-muted">Последнее обновление 3 мин. назад</small></p>
           </div>
         </div>
